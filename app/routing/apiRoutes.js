@@ -5,7 +5,7 @@ module.exports = (function() {
 
     var apiRoutes = require('express').Router();
 
-    apiRoutes.get('/api/friends', function(req,res) {
+    apiRoutes.get('/friends', function(req,res) {
         res.sendFile(path.join(__dirname + '/../data', 'friends.json'))
     });
 

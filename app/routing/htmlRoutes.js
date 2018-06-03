@@ -17,7 +17,7 @@ htmlRoutes.get('/css/:css', function (req, res) {
 });
 
 htmlRoutes.get('/javascript/:javascript', function (req, res) {
-    res.sendFile(path.join(__dirname, `../public/javascript/${req.params.js}`));
+    res.sendFile(path.join(__dirname, `../public/javascript/${req.params.javascript}`));
 });
 
 htmlRoutes.get('*', function (req, res) {
