@@ -41,12 +41,22 @@ var survey = [];
   }
 
   $('#submitBtn').on('click', function(){
+    event.preventDefault();
     var userName = $('#nameInput').val();
     var userPhoto = $('#photoInput').val();
-
     var ansArr = [];
     for (var idx = 0; idx<10; idx++) {
       ansArr.push(parseInt($(`input[name=options-${idx}]:checked`).val()))
     }
-    console.log(ansArr)
+    
+    var newFriend = {
+        name: userName,
+        photo: userPhoto,
+        scores: ansArr,
+    }
+
+    $.post("/api/friends", newFriend)
+        .then(function(data) {
+          console.log("posting response data: ", data);
+    });
 })
