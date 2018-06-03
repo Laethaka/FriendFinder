@@ -1,27 +1,17 @@
-// var express = require("express");
-// var bodyParser = require("body-parser");
-// var fileSys = require('fs');
 var path = require('path');
 
-// var app = express();
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+module.exports = (function() {
+    'use strict';
 
-// var PORT = 5005;
+    var apiRoutes = require('express').Router();
 
-app.get('/api/friends', function(req,res) {
-    res.json()
-});
+    apiRoutes.get('/api/friends', function(req,res) {
+        res.sendFile(path.join(__dirname + '/../data', 'friends.json'))
+    });
 
-app.post('/api/friends', function(req,res) {
-    // res.sendFile(path.join(__dirname + '/../public', "home.html"));
+    apiRoutes.post('/api/friends', function(req,res) {
+        // res.sendFile(path.join(__dirname + '/../public', "home.html"));
+    });
+    return apiRoutes;
+})();
 
-});
-
-
-
-
-// app.listen(PORT, function() {
-//     console.log("App listening on PORT " + PORT);
-//   });
-  
