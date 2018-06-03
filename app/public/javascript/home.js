@@ -1,3 +1,5 @@
+console.log('hithere')
+
 var fileSys = require('fs');
 
 fileSys.readFile('./app/data/friends.json', function(err, data) {
