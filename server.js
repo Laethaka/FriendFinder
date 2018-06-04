@@ -13,12 +13,6 @@ app.use('/api', apiRoutes);
 var htmlRoutes = require('./app/routing/htmlRoutes');
 app.use('/', htmlRoutes);
 
-
-
-
-
-
-
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
