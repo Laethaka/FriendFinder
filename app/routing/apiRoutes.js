@@ -10,13 +10,6 @@ apiRoutes.get('/friends', function(req,res) {//DECLARING HOW TO SEND FRIENDS JSO
 });
 
 apiRoutes.post('/friends', function(req,res) {
-    
-
-    // REMOVING ABILITY TO PUSH NEW FRIEND IN
-    // friendsJSON.push(newFriend);
-    // fileSys.writeFile(path.join(__dirname + '/../data', 'friends.json'), friendsJSON, function(err){
-    //         if (err) throw err;
-    //     })
 
     var newFriend = req.body; //STORING INCOMING JSON    
     var friendsJSON = require("../data/friends.json");
@@ -35,7 +28,13 @@ apiRoutes.post('/friends', function(req,res) {
         }
     }
 
-    res.json(match);//SENDING TOKEN RESPONSE
+    //PUSHING NEW FRIEND INTO JSON
+    friendsJSON.push(newFriend);
+    fileSys.writeFile(path.join(__dirname + '/../data', 'friends.json'), JSON.stringify(friendsJSON, null, 2), function(err){
+        if (err) throw err;
+    })
+
+    res.json(match);//SENDING RESPONSE
 });
 
 module.exports = apiRoutes;
