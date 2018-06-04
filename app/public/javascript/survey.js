@@ -40,7 +40,7 @@ var survey = [];
       $('#quizField').append(newAnswers);
   }
 
-  $('#submitBtn').on('click', function(){
+$('#submitBtn').on('click', function(){
     event.preventDefault();
     var userName = $('#nameInput').val();
     var userPhoto = $('#photoInput').val();
@@ -55,8 +55,24 @@ var survey = [];
         scores: ansArr,
     }
 
-    $.post("/api/friends", newFriend)
-        .then(function(data) {
-          console.log("posting response data: ", data);
+    $.post("/api/friends", newFriend).then(function(data) {
+        $('#quizField').empty();
+        $('.bottom-row').addClass('invisible');
+        $('#surveyTitle').text('Thanks for taking the survey!')
+
+        var resultCard = $(`
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="${data.photo}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">It's a match!</h5>
+                    <p class="card-text">You were matched with ${data.name}!</p>
+                </div>
+            </div>
+        `)
+
+        $('#quizField').append(resultCard);
+        
+
+      console.log("posting response data: ", data);
     });
 })

@@ -11,3 +11,12 @@
 .bottom-row{
     margin-top: 20px;
 }
+
+.card{
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+body {
+    background-color: lightcoral;
+}
