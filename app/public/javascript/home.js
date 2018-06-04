@@ -1,5 +1,4 @@
-$.get('/api/friends').then(function(err, data) {
-    if (err) throw err;
+$.get('/api/friends').then(function(data) {
     console.log(data);
     $('#numEntries').text(data.length)
 })
